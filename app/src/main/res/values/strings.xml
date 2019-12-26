@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Exercise4</string>
+    <string name="dob">Select DOB:</string>
+    <string name="age">Age:</string>
+    <string name="basicsaving">Min. Basic Saving:</string>
+    <string name="investment">Investment:</string>
+    <string name="epf">Employee Provident Fund (EPF)</string>
+    <string name="ok">OK</string>
+    <string name="reset">Reset</string>
+    <string name="date">Please Select a Date</string>
+    <string name="result">RM 0.00</string>
+    <string name="minsaving">RM 0.00</string>
+</resources>

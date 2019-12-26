@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+    android:id="@+id/btnreset"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="60dp"
+    android:layout_marginTop="60dp"
+    android:layout_marginEnd="32dp"
+    android:text="@string/reset"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/btnok"
+    app:layout_constraintTop_toBottomOf="@+id/txtInvestment" />
+
+    <TextView
+    android:id="@+id/lblage"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="32dp"
+    android:layout_marginTop="32dp"
+    android:text="@string/age"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/lbldob" />
+
+    <TextView
+    android:id="@+id/lblBasicSaving"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="32dp"
+    android:layout_marginTop="32dp"
+    android:text="@string/basicsaving"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/lblage" />
+
+    <TextView
+    android:id="@+id/lblinvestment"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="32dp"
+    android:layout_marginTop="40dp"
+    android:text="@string/investment"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/lblBasicSaving" />
+
+    <TextView
+    android:id="@+id/lblepf"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="50dp"
+    android:layout_marginTop="32dp"
+    android:layout_marginEnd="50dp"
+    android:text="@string/epf"
+    android:textColor="@android:color/black"
+    android:textSize="18sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+    android:id="@+id/lbldob"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="32dp"
+    android:layout_marginTop="32dp"
+    android:text="@string/dob"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/lblepf" />
+
+    <Button
+    android:id="@+id/btnok"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="32dp"
+    android:layout_marginTop="60dp"
+    android:text="@string/ok"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/lblinvestment" />
+
+    <TextView
+    android:id="@+id/txtDOB"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="80dp"
+    android:layout_marginTop="32dp"
+    android:text="@string/date"
+    app:layout_constraintStart_toEndOf="@+id/lbldob"
+    app:layout_constraintTop_toBottomOf="@+id/lblepf" />
+
+    <TextView
+    android:id="@+id/txtage"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="127dp"
+    android:layout_marginTop="32dp"
+    app:layout_constraintStart_toEndOf="@+id/lblage"
+    app:layout_constraintTop_toBottomOf="@+id/txtDOB" />
+
+    <TextView
+    android:id="@+id/txtInvestment"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="82dp"
+    android:layout_marginTop="40dp"
+    android:text="@string/result"
+    app:layout_constraintStart_toEndOf="@+id/lblinvestment"
+    app:layout_constraintTop_toBottomOf="@+id/txtsaving" />
+
+    <TextView
+    android:id="@+id/txtsaving"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="42dp"
+    android:layout_marginTop="32dp"
+    android:text="@string/minsaving"
+    app:layout_constraintStart_toEndOf="@+id/lblBasicSaving"
+    app:layout_constraintTop_toBottomOf="@+id/txtage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
