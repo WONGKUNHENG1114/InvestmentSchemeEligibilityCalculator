@@ -3,8 +3,13 @@ package com.example.investmentschemeeligibilitycalculator
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import java.text.SimpleDateFormat
 import java.util.*
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,90 +18,105 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val c: Calendar = Calendar.getInstance()
-        val  tdy_Year = c.get(Calendar.YEAR)
-        val tdy_Month = c.get(Calendar.MONTH)
-        val  tdy_Day = c.get(Calendar.DAY_OF_MONTH)
-        var age : Int = 0
+        val tdy:Calendar=Calendar.getInstance()
+        var  selectedYear=c.get(Calendar.YEAR)
+        var selectedMonth= c.get(Calendar.MONTH)
+        var  selectedDay=c.get(Calendar.DAY_OF_MONTH)
+        var age :Int
 
         txtDOB.setOnClickListener {
 
-            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener {
-                    view, year, monthOfYear, dayOfMonth ->
-                //Display Selected date in TextView
-                txtDOB.setText("%d-%d-%d".format(dayOfMonth,monthOfYear+1,year))
+            val dpd = DatePickerDialog(this,DatePickerDialog.OnDateSetListener {
+                    view, year, month, dayOfMonth ->
+                c.set(year,month,dayOfMonth)
+                selectedYear=year
+                selectedMonth=month
+                selectedDay=dayOfMonth
+                txtDOB.setText("%d-%d-%d".format(dayOfMonth,month+1,year))
+            }, selectedYear, selectedMonth,selectedDay)
 
-                age =  tdy_Year - year
-                txtage.setText(age.toString())
-            }, tdy_Year, tdy_Month, tdy_Day)
             dpd.show()
         }
 
+         fun  getAge():Int
+         {
+             age=tdy.get(Calendar.YEAR) -c.get(Calendar.YEAR)
+             if(tdy.get(Calendar.DAY_OF_YEAR)<c.get(Calendar.DAY_OF_YEAR))
+             {
+                 age--
+             }
+             return age
+        }
+
         btnok.setOnClickListener {
-            val minSaving: Double
-            val total: Double
-            if(age >= 16 && age <= 20){
-                minSaving = 5000.0
-                total = minSaving * 0.3
-                txtsaving.setText("RM " + minSaving)
-                txtInvestment.setText("RM " + total)
-
-            } else if (age >= 21 && age <= 25){
-                minSaving = 14000.0
-                total = minSaving * 0.3
-                txtsaving.setText("RM " + minSaving)
-                txtInvestment.setText("RM " + total)
-
-            } else if (age >= 26 && age <= 30) {
-                minSaving = 29000.0
-                total = minSaving * 0.3
-                txtsaving.setText("RM " + minSaving)
-                txtInvestment.setText("RM " + total)
-
-            } else if (age >= 31 && age <= 35) {
-                minSaving = 50000.0
-                total = minSaving * 0.3
-                txtsaving.setText("RM " + minSaving)
-                txtInvestment.setText("RM " + total)
-
-            } else if (age >= 36 && age <= 40) {
-                minSaving = 78000.0
-                total = minSaving * 0.3
-                txtsaving.setText("RM " + minSaving)
-                txtInvestment.setText("RM " + total)
-
-            } else if (age >= 41 && age <= 45) {
-                minSaving = 116000.0
-                total = minSaving * 0.3
-                txtsaving.setText("RM " + minSaving)
-                txtInvestment.setText("RM " + total)
-
-            } else if (age >= 46 && age <= 50) {
-                minSaving = 165000.0
-                total = minSaving * 0.3
-                txtsaving.setText("RM " + minSaving)
-                txtInvestment.setText("RM " + total)
-
-            } else if (age >= 51 && age <= 55) {
-                minSaving = 228000.0
-                total = minSaving * 0.3
-                txtsaving.setText("RM " + minSaving)
-                txtInvestment.setText("RM " + total)
-            } else {
-                txtDOB.setText("Please Select a Date")
-                txtage.setText("")
-                txtsaving.setText("RM 0.00")
-                txtInvestment.setText("RM 0.00")
+            age=getAge()
+            txtage.setText(age.toString())
+            when(age)
+            {
+                in 16..20 ->
+                {
+                    txtsaving.setText(String.format("RM %.2f",5000.00))
+                    txtInvestment.setText(String.format("RM %.2f",5000.00 * 0.3))
+                }
+                in 21..25->
+                {
+                    txtsaving.setText(String.format("RM %.2f", 14000.00))
+                    txtInvestment.setText(String.format("RM %.2f",14000.00 * 0.3))
+                }
+                in 26..30->
+                {
+                    txtsaving.setText(String.format("RM %.2f", 29000.00))
+                    txtInvestment.setText(String.format("RM %.2f",29000.00 * 0.3))
+                }
+                in 31..35->
+                {
+                    txtsaving.setText(String.format("RM %.2f", 50000.00))
+                    txtInvestment.setText(String.format("RM %.2f",50000.00 * 0.3))
+                }
+                in 36..40->
+                {
+                    txtsaving.setText(String.format("RM %.2f", 78000.00))
+                    txtInvestment.setText(String.format("RM %.2f",78000.00 * 0.3))
+                }
+                in 41..45->
+                {
+                    txtsaving.setText(String.format("RM %.2f", 116000.00))
+                    txtInvestment.setText(String.format("RM %.2f",116000.00 * 0.3))
+                }
+                in 46..50->
+                {
+                    txtsaving.setText(String.format("RM %.2f", 165000.00))
+                    txtInvestment.setText(String.format("RM %.2f",165000.00 * 0.3))
+                }
+                in 51..55->
+                {
+                    txtsaving.setText(String.format("RM %.2f", 228000.00))
+                    txtInvestment.setText(String.format("RM %.2f",228000.00 * 0.3))
+                }
+                else ->
+                {
+//                    txtDOB.setText("Please Select a Date that not exceed 55 age")
+//                    txtage.setText("")
+//                    txtsaving.setText("RM 0.00")
+//                    txtInvestment.setText("RM 0.00")
+                  val toast= Toast.makeText(applicationContext,"Please Select a Date that not exceed 55 age",Toast.LENGTH_SHORT)
+                    toast.show()
+                }
             }
+
         }
 
 
 
 
         btnreset.setOnClickListener {
-            txtDOB.setText("Please Select a Date")
-            txtage.setText("")
-            txtsaving.setText("RM 0.00")
-            txtInvestment.setText("RM 0.00")
+            selectedYear=tdy.get(Calendar.YEAR)
+             selectedMonth= tdy.get(Calendar.MONTH)
+              selectedDay=tdy.get(Calendar.DAY_OF_MONTH)
+            txtDOB.setText(R.string.selectDate)
+            txtage.text=""
+            txtsaving.setText(R.string.result)
+            txtInvestment.setText(R.string.result)
 
         }
 
